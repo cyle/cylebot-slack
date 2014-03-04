@@ -1,0 +1,3 @@
+/last_ts*
+/config.*.js
+!/config.sample.js
