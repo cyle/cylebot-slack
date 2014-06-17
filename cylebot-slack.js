@@ -609,7 +609,15 @@ function parseChats(messages) {
 					saySomething("Uhhh I need a server to check...", ':satellite:');
 					return;
 				}
-				var theserver = server_pieces[1];
+				// slack passes along URLs in a weird way
+				var theserver = '';
+				var url_pieces = server_pieces[1].match(/^<[^|]+\|(.+)>$/i);
+				if (url_pieces[1] != undefined) {
+					theserver = url_pieces[1];
+				} else {
+					theserver = server_pieces[1];
+				}
+				//console.log('checking nagios host status for ' + theserver);
 				http.get({host: my_home_nagiosserver, port: 80, path: '/nagios/?w=host&h='+theserver}, function(res) {
 					var returned_text = '';
 					res.on('data', function (chunk) {
