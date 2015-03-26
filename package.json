@@ -1,0 +1,12 @@
+{
+	"name": "cylebot-slack",
+	"version": "3.0.0",
+	"description": "An awesome chatbot named Cylebot",
+	"author": {
+		"name": "Cyle Gage"
+	},
+	"dependencies": {
+		"coffee-script": "1.6.3",
+		"slack-client": "1.2.0"
+	}
+}
